@@ -152,13 +152,16 @@ if(NOT LIBXML2_FOUND)
   message(WARNING "libxml2 not found - disabling CML support!")
 endif()
 
-find_package(ZLIB)
-if(ZLIB_FOUND)
-  add_definitions(-DHAVE_LIBZ)
-  include_directories(${ZLIB_INCLUDE_DIR})
-  # Longstanding unsolved problem with compression under Windows
-  if(WIN32)
-    add_definitions(-DDISABLE_WRITE_COMPRESSION)
+option(WITH_ZLIB "Build zlib support" ON)
+if(WITH_ZLIB)
+  find_package(ZLIB)
+  if(ZLIB_FOUND)
+    add_definitions(-DHAVE_LIBZ)
+    include_directories(${ZLIB_INCLUDE_DIR})
+    # Longstanding unsolved problem with compression under Windows
+    if(WIN32)
+      add_definitions(-DDISABLE_WRITE_COMPRESSION)
+    endif()
   endif()
 endif()
 

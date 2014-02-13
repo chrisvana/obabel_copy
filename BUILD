@@ -7,11 +7,18 @@
  } },
  { "cmake": {
     "name": "obabel_cmake",
-    "cmake_args": [ "-DEIGEN2_INCLUDE_DIR=$SRC_DIR/third_party/eigen2", "-DBUILD_SHARED=OFF" ],
+    "cmake_args": [ "-DEIGEN2_INCLUDE_DIR=$SRC_DIR/third_party/eigen2",
+                    "-DBUILD_SHARED=OFF",
+                    "-DWITH_ZLIB=OFF"
+    ],
+    "make_target": "openbabel",
     "outs": [ "$GEN_DIR/build/src/libopenbabel.a" ]
  } },
  { "cc_library": {
     "name": "obabel",
+    "strict_file_mode": false,
+    "cc_objects": [ "$GEN_DIR/build/src/libopenbabel.a" ],
+    "cc_include_dirs": [ "$SRC_DIR/include", "$GEN_DIR/build/include" ],
     "dependencies": [ ":obabel_cmake" ]
  } }
 ]

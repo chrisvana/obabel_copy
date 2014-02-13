@@ -151,6 +151,7 @@ std::vector<std::string> EnableStaticPlugins()
   // Return list of all plugin ids. This also ensures the code is not removed
   // by compiler optimization.
   std::vector<std::string> plugin_ids;
+
   // formats
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theACRFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theADFOutputFormat)->GetID());
@@ -195,7 +196,7 @@ std::vector<std::string> EnableStaticPlugins()
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGaussianOutputFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGaussianInputFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGaussianZMatrixInputFormat)->GetID());
-  plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGenBankFormat)->GetID());
+  // plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGenBankFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGhemicalFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGROMOS96Format)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGULPFormat)->GetID());
@@ -229,6 +230,7 @@ std::vector<std::string> EnableStaticPlugins()
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&thePCModelFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&thePDBFormat)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&thePDBQTFormat)->GetID());
+
 #ifdef HAVE_LIBZ
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&thePNGFormat)->GetID());
 #endif
@@ -284,6 +286,7 @@ std::vector<std::string> EnableStaticPlugins()
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&secondSmartsFilter)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theTitleFilter)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&TheFormulaDescriptor)->GetID());
+  // NOTE(cvanarsdale): Broken.
   //plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theFPCount)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theInChIFilter)->GetID());
   // smarts descriptors
@@ -322,6 +325,7 @@ std::vector<std::string> EnableStaticPlugins()
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theOpReadConformers)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theOpSort)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theOpExtraOut)->GetID());
+
 #ifdef HAVE_EIGEN
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theOpConformer)->GetID());
 #endif
@@ -332,9 +336,11 @@ std::vector<std::string> EnableStaticPlugins()
   // charges
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theGasteigerCharges)->GetID());
   plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theMMFF94Charges)->GetID());
+
 #ifdef HAVE_EIGEN
-  plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theQEqCharges)->GetID());
-  plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theQTPIECharges)->GetID());
+  // NOTE(cvanarsdale): Broken.
+  // plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theQEqCharges)->GetID());
+  // plugin_ids.push_back(reinterpret_cast<OBPlugin*>(&theQTPIECharges)->GetID());
 #endif
 
   return plugin_ids;
