@@ -18,7 +18,7 @@
     "name": "obabel",
     "strict_file_mode": false,
     "cc_objects": [ "$GEN_DIR/build/src/libopenbabel.a" ],
-    "cc_include_dirs": [ "$SRC_DIR/include", "$GEN_DIR/build/include" ],
+    "cc_include_dirs": [ "include", "$GEN_DIR/build/include" ],
     "dependencies": [ ":obabel_cmake" ]
  } }
 ]
